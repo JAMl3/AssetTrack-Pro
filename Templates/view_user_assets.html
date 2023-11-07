@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Assets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <a href="{{ url_for('welcome') }}" class="btn btn-primary float-end">
+            <i class="bi bi-house-door"></i> Home
+        </a>
+        <h1>User-Specific Assets</h1>
+        <form action="{{ url_for('view_user_assets') }}" method="post">
+            <div class="mb-3">
+                <label for="user_id" class="form-label">Select User</label>
+                <select class="form-select" id="user_id" name="user_id" required>
+                    <option value="" disabled selected>Select User</option>
+                    {% for user in users %}
+                    <option value="{{ user[0] }}">{{ user[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">View User-Specific Assets</button>
+        </form>
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Unique ID</th>
+                        <th>PO Number</th>
+                        <th>Acquisition Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for asset in user_assets %}
+                    <tr>
+                        <td>{{ asset[4] }}</td> <!-- Name -->
+                        <td>{{ asset[5] }}</td> <!-- Category -->
+                        <td>{{ asset[6] }}</td> <!-- Unique ID -->
+                        <td>{{ asset[7] }}</td> <!-- po_number -->
+                        <td>{{ asset[8] }}</td> <!-- Acquisition Date -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Asset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <a href="{{ url_for('welcome') }}" class="btn btn-primary float-end">
+            <i class="bi bi-house-door"></i> Home
+        </a>
+        <h1>Add New Asset</h1>
+        <form action="{{ url_for('add_asset') }}" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Asset Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category" required>
+            </div>
+            <div class="mb-3">
+                <label for="unique_id" class="form-label">Unique ID</label>
+                <input type="text" class="form-control" id="unique_id" name="unique_id" required>
+            </div>
+            <div class="mb-3">
+                <label for="po_number" class="form-label">PO Number</label>
+                <input type="text" class="form-control" id="po_number" name="po_number" required>
+            </div>
+            <div class="mb-3">
+                <label for="acquisition_date" class="form-label">Acquisition Date</label>
+                <input type="date" class="form-control" id="acquisition_date" name="acquisition_date" required>
+            </div>
+            <!-- Add user_id field here as a hidden input -->
+            <input type="hidden" name="user_id" value="{{ user_id }}">
+            <button type="submit" class="btn btn-primary">Add Asset</button>
+        </form>
+        <form action="{{ url_for('import_assets') }}" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="file" class="form-label">Import Assets CSV File</label>
+                <input class="form-control" type="file" id="file" name="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Import</button>
+        </form>
+
+    </div>
+</body>
+
+</html>
