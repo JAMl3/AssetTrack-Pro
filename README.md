@@ -21,8 +21,8 @@ This web application is built using Flask, a Python web framework, and SQLite as
 
 1. **Clone the Repository:**
    ```
-   git clone https://github.com/your-username/asset-management-web-app.git
-   cd asset-management-web-app
+   git clone https://github.com/JAMl3/AssetTrack-Pro
+   cd AssetTrack-Pro
    ```
 
 2. **Install Dependencies:**
